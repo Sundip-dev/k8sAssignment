@@ -1,0 +1,15 @@
+1) results after deleteing the vote pod 
+ -> In Frontend =  even after deleting the vote pod , instances are up and hence we are able to see the response on frontend.
+ -> In Unix  =  after running ( kubectl get po -o wide ) , we are able to see the vote pod running with new pod Id .
+ Reason = as the vote pod Controlled by "ReplicaSet" and replicas is set to 1 (kubectl get rs), it means 1 pod must be running. So even after deletion of vote pod , ReplicaSet
+creates another vote pod with new pod Id.  
+
+2) results after deleteing the worker pod 
+ -> same as vote pod
+
+3) results after deleteing the db pod
+ -> In Frontend = before deleting db pod, we can see the result as Cat = 0% and Dog = 100%, but after deleting the db pod , the value changed to Cat = 50% 
+    and Dog = 50%
+ -> In Unix =  before deleting db pod, restarts is 0 for result and worker pod. After deleting db pod restarts become 1 for both result and worker pod.
+Solution := for this , inside db-deployment.yaml , we can specify hostPath for volumes, so that even if pod goes down, data will not be lost and stored in given hostpath.
+and hence then we will be able to see the correct result.
