@@ -11,5 +11,6 @@ creates another vote pod with new pod Id.
  -> In Frontend = before deleting db pod, we can see the result as Cat = 0% and Dog = 100%, but after deleting the db pod , the value changed to Cat = 50% 
     and Dog = 50%
  -> In Unix =  before deleting db pod, restarts is 0 for result and worker pod. After deleting db pod restarts become 1 for both result and worker pod.
+Reason for cause := so its because of pod deletion, the data of pod is also got deleted.
 Solution := for this , inside db-deployment.yaml , we can specify hostPath for volumes, so that even if pod goes down, data will not be lost and stored in given hostpath.
 and hence then we will be able to see the correct result.
