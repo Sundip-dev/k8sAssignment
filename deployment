@@ -1,0 +1,2 @@
+Below is the command to update the container image of running pod kubia with image luksa/kubia:v2 := 
+kubectl set image deployment kubia nodejs=luksa/kubia:v2
