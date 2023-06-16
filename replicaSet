@@ -1,0 +1,5 @@
+We use daemon set when we want atleast one pod to be run inside every instances. Daemon set exactly creates one pod inside every node, but replica set do not bother about 
+in which node pod is running.
+Example :=  so we have task manager application in our laptop where we can see the resources consuming by the current running applications. So, running same task manager 
+applications in multiple tabs will not give different result just like running all pods in one node. And, if we want the information regarding other laptops , one task manager
+must be running in each laptop. So using daemon set instead of replica set we can have all the nodes with one pod running , and that solve the issue.
